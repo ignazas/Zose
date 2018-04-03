@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# clocker, driver_output, sinus_sampler, square_sampler, switcher, triangle_sampler
+# clocker, driver_output, level_control, level_control, sinus_sampler, square_sampler, switcher, triangle_sampler
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -166,6 +166,10 @@ proc create_root_design { parentCell } {
 
   # Create ports
   set bclock [ create_bd_port -dir O -type clk bclock ]
+  set btn_f_down [ create_bd_port -dir I btn_f_down ]
+  set btn_f_up [ create_bd_port -dir I btn_f_up ]
+  set btn_vol_down [ create_bd_port -dir I btn_vol_down ]
+  set btn_vol_up [ create_bd_port -dir I btn_vol_up ]
   set led [ create_bd_port -dir O -from 3 -to 0 -type data led ]
   set lrclock [ create_bd_port -dir O -type clk lrclock ]
   set mclock [ create_bd_port -dir O -type clk mclock ]
@@ -232,6 +236,28 @@ proc create_root_design { parentCell } {
      return 1
    }
   
+  # Create instance: level_control_0, and set properties
+  set block_name level_control
+  set block_cell_name level_control_0
+  if { [catch {set level_control_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $level_control_0 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: level_control_1, and set properties
+  set block_name level_control
+  set block_cell_name level_control_1
+  if { [catch {set level_control_1 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $level_control_1 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
   # Create instance: sinus_sampler_0, and set properties
   set block_name sinus_sampler
   set block_cell_name sinus_sampler_0
@@ -277,18 +303,22 @@ proc create_root_design { parentCell } {
    }
   
   # Create port connections
+  connect_bd_net -net btn_vol_down_1 [get_bd_ports btn_vol_down] [get_bd_pins level_control_0/down] [get_bd_pins level_control_1/down]
+  connect_bd_net -net btn_vol_up_1 [get_bd_ports btn_vol_up] [get_bd_pins level_control_0/up] [get_bd_pins level_control_1/up]
   connect_bd_net -net clk_wiz_0_clk_100 [get_bd_ports mclock] [get_bd_pins clk_wiz_0/clk_100] [get_bd_pins driver_output_0/in_mclock] [get_bd_pins sinus_sampler_0/clock] [get_bd_pins square_sampler_0/clock] [get_bd_pins triangle_sampler_0/clock]
   connect_bd_net -net clk_wiz_0_clk_12288 [get_bd_pins clk_wiz_0/clk_12288] [get_bd_pins clocker_0/in_12288] [get_bd_pins switcher_0/clk]
   connect_bd_net -net clk_wiz_0_locked [get_bd_ports led] [get_bd_pins clk_wiz_0/locked]
   connect_bd_net -net clocker_0_out_bclock [get_bd_ports bclock] [get_bd_pins clocker_0/out_bclock] [get_bd_pins driver_output_0/in_bclock]
   connect_bd_net -net clocker_0_out_lrclock [get_bd_ports lrclock] [get_bd_pins clocker_0/out_lrclock] [get_bd_pins driver_output_0/in_lrclock]
   connect_bd_net -net driver_output_0_out_sdata [get_bd_ports sdata] [get_bd_pins driver_output_0/out_sdata]
+  connect_bd_net -net level_control_0_data_out [get_bd_pins driver_output_0/in_data_l] [get_bd_pins level_control_0/data_out]
+  connect_bd_net -net level_control_1_data_out [get_bd_pins driver_output_0/in_data_r] [get_bd_pins level_control_1/data_out]
   connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins clk_wiz_0/resetn]
   connect_bd_net -net sinus_sampler_0_audio_data [get_bd_pins sinus_sampler_0/audio_data] [get_bd_pins switcher_0/in_B_L] [get_bd_pins switcher_0/in_B_R]
   connect_bd_net -net source_switch_1 [get_bd_ports source_switch] [get_bd_pins switcher_0/source_switch]
   connect_bd_net -net square_sampler_0_audio_data [get_bd_pins square_sampler_0/audio_data] [get_bd_pins switcher_0/in_A_L]
-  connect_bd_net -net switcher_0_out_L [get_bd_pins driver_output_0/in_data_l] [get_bd_pins switcher_0/out_L]
-  connect_bd_net -net switcher_0_out_R [get_bd_pins driver_output_0/in_data_r] [get_bd_pins switcher_0/out_R]
+  connect_bd_net -net switcher_0_out_L [get_bd_pins level_control_0/data_in] [get_bd_pins switcher_0/out_L]
+  connect_bd_net -net switcher_0_out_R [get_bd_pins level_control_1/data_in] [get_bd_pins switcher_0/out_R]
   connect_bd_net -net sys_clock_1 [get_bd_ports sys_clock] [get_bd_pins clk_wiz_0/clk_in1]
   connect_bd_net -net triangle_sampler_0_audio_data [get_bd_pins switcher_0/in_A_R] [get_bd_pins triangle_sampler_0/audio_data]
 
