@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a35ticsg324-1L" LaunchTime="1522777184">
+  <File Type="PWROPT-DCP" Name="zose_wrapper_pwropt.dcp"/>
+  <File Type="ROUTE-PWR" Name="zose_wrapper_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="zose_wrapper.tcl"/>
+  <File Type="ROUTE-PWR-SUM" Name="zose_wrapper_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="zose_wrapper_reports.tcl"/>
+  <File Type="BG-DRC" Name="zose_wrapper.drc"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="zose_wrapper_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="zose_wrapper_timing_summary_init.rpt"/>
+  <File Type="OPT-HWDEF" Name="zose_wrapper.hwdef"/>
+  <File Type="OPT-DCP" Name="zose_wrapper_opt.dcp"/>
+  <File Type="OPT-DRC" Name="zose_wrapper_drc_opted.rpt"/>
+  <File Type="OPT-TIMING" Name="zose_wrapper_timing_summary_opted.rpt"/>
+  <File Type="PWROPT-DRC" Name="zose_wrapper_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="zose_wrapper_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="zose_wrapper_placed.dcp"/>
+  <File Type="PLACE-IO" Name="zose_wrapper_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="zose_wrapper_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="zose_wrapper_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="zose_wrapper_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="zose_wrapper_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="zose_wrapper_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="zose_wrapper_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-TIMING" Name="zose_wrapper_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="zose_wrapper_postplace_pwropt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="zose_wrapper_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="zose_wrapper_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="zose_wrapper_drc_physopted.rpt"/>
+  <File Type="BG-BIT" Name="zose_wrapper.bit"/>
+  <File Type="PHYSOPT-TIMING" Name="zose_wrapper_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="zose_wrapper_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="zose_wrapper_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="zose_wrapper_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="zose_wrapper_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="zose_wrapper_drc_routed.pb"/>
+  <File Type="BITSTR-MSK" Name="zose_wrapper.msk"/>
+  <File Type="ROUTE-DRC-RPX" Name="zose_wrapper_drc_routed.rpx"/>
+  <File Type="BG-BGN" Name="zose_wrapper.bgn"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="zose_wrapper_methodology_drc_routed.rpt"/>
+  <File Type="BITSTR-RBT" Name="zose_wrapper.rbt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="zose_wrapper_methodology_drc_routed.rpx"/>
+  <File Type="BG-BIN" Name="zose_wrapper.bin"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="zose_wrapper_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="zose_wrapper_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="zose_wrapper_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="zose_wrapper_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="zose_wrapper_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="zose_wrapper_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="zose_wrapper_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="zose_wrapper_incremental_reuse_routed.rpt"/>
+  <File Type="RDI-RDI" Name="zose_wrapper.vdi"/>
+  <File Type="ROUTE-CLK" Name="zose_wrapper_clock_utilization_routed.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="zose_wrapper_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="zose_wrapper_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="zose_wrapper_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="zose_wrapper_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="zose_wrapper_timing_summary_postroute_physopted.rpx"/>
+  <File Type="BITSTR-NKY" Name="zose_wrapper.nky"/>
+  <File Type="BITSTR-BMM" Name="zose_wrapper_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="zose_wrapper.mmi"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="zose_wrapper.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="zose_wrapper.sysdef"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/RTL/square_sampler.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/square_sampler.v"/>
+        <Attr Name="ImportTime" Val="1522775458"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/RTL/clocker.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/clocker.v"/>
+        <Attr Name="ImportTime" Val="1522775471"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/RTL/driver_output.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/driver_output.v"/>
+        <Attr Name="ImportTime" Val="1522775482"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/RTL/switcher.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/switcher.v"/>
+        <Attr Name="ImportTime" Val="1522775506"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/RTL/sinus_sampler.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/sinus_sampler.v"/>
+        <Attr Name="ImportTime" Val="1522775493"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/RTL/triangle_sampler.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/triangle_sampler.v"/>
+        <Attr Name="ImportTime" Val="1522775513"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/zose/zose.bd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/zose/hdl/zose_wrapper.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="zose_wrapper"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/RTL/Arty_constraints.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/Arty_constraints.xdc"/>
+        <Attr Name="ImportTime" Val="1522775667"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2017">
+      <Desc>Default settings for Implementation.</Desc>
+    </StratHandle>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="zose_clk_wiz_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zose_clocker_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zose_driver_output_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zose_square_sampler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zose_triangle_sampler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zose_switcher_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zose_sinus_sampler_0_0"/>
+</GenRun>

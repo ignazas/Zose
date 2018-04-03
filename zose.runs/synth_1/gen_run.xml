@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="synth_1" LaunchPart="xc7a35ticsg324-1L" LaunchTime="1522777184">
+  <File Type="PA-TCL" Name="zose_wrapper.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="zose_wrapper_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="zose_wrapper_reports.tcl"/>
+  <File Type="RDS-RDS" Name="zose_wrapper.vds"/>
+  <File Type="RDS-UTIL" Name="zose_wrapper_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="zose_wrapper_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="zose_wrapper.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="zose_wrapper_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="zose_wrapper_timing_summary_synth.pb"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/RTL/square_sampler.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/square_sampler.v"/>
+        <Attr Name="ImportTime" Val="1522775458"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/RTL/clocker.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/clocker.v"/>
+        <Attr Name="ImportTime" Val="1522775471"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/RTL/driver_output.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/driver_output.v"/>
+        <Attr Name="ImportTime" Val="1522775482"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/RTL/switcher.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/switcher.v"/>
+        <Attr Name="ImportTime" Val="1522775506"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/RTL/sinus_sampler.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/sinus_sampler.v"/>
+        <Attr Name="ImportTime" Val="1522775493"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/RTL/triangle_sampler.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/triangle_sampler.v"/>
+        <Attr Name="ImportTime" Val="1522775513"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/zose/zose.bd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/zose/hdl/zose_wrapper.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="zose_wrapper"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/RTL/Arty_constraints.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/Arty_constraints.xdc"/>
+        <Attr Name="ImportTime" Val="1522775667"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2017">
+      <Desc>Vivado Synthesis Defaults</Desc>
+    </StratHandle>
+    <Step Id="synth_design"/>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="zose_clk_wiz_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zose_clocker_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zose_driver_output_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zose_square_sampler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zose_triangle_sampler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zose_switcher_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zose_sinus_sampler_0_0"/>
+</GenRun>

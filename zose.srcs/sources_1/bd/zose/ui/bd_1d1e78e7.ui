@@ -1,0 +1,49 @@
+{
+   ExpandedHierarchyInLayout: "",
+   guistr: "# # String gsaved with Nlview 6.6.11  2017-06-12 bk=1.3860 VDI=40 GEI=35 GUI=JA:1.6
+#  -string -flagsOSRD
+preplace port bclock -pg 1 -y 70 -defaultsOSRD
+preplace port mclock -pg 1 -y 570 -defaultsOSRD
+preplace port btn_f_up -pg 1 -y 280 -defaultsOSRD
+preplace port btn_vol_up -pg 1 -y 40 -defaultsOSRD
+preplace port source_switch -pg 1 -y 90 -defaultsOSRD
+preplace port sys_clock -pg 1 -y 580 -defaultsOSRD
+preplace port sdata -pg 1 -y 160 -defaultsOSRD
+preplace port lrclock -pg 1 -y 250 -defaultsOSRD
+preplace port btn_vol_down -pg 1 -y 60 -defaultsOSRD
+preplace port btn_f_down -pg 1 -y 300 -defaultsOSRD
+preplace port reset -pg 1 -y 560 -defaultsOSRD
+preplace portBus led -pg 1 -y 550 -defaultsOSRD
+preplace inst level_control_0 -pg 1 -lvl 3 -y 70 -defaultsOSRD
+preplace inst level_control_1 -pg 1 -lvl 3 -y 200 -defaultsOSRD
+preplace inst driver_output_0 -pg 1 -lvl 4 -y 160 -defaultsOSRD
+preplace inst sinus_sampler_0 -pg 1 -lvl 1 -y 420 -defaultsOSRD
+preplace inst square_sampler_0 -pg 1 -lvl 1 -y 160 -defaultsOSRD
+preplace inst switcher_0 -pg 1 -lvl 2 -y 170 -defaultsOSRD
+preplace inst clocker_0 -pg 1 -lvl 3 -y 330 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 3 -y 570 -defaultsOSRD
+preplace inst triangle_sampler_0 -pg 1 -lvl 1 -y 290 -defaultsOSRD
+preplace netloc btn_vol_down_1 1 0 3 NJ 60 NJ 60 660
+preplace netloc clk_wiz_0_clk_100 1 0 5 20 490 NJ 490 NJ 490 1030 570 NJ
+preplace netloc clocker_0_out_lrclock 1 3 2 1020 250 NJ
+preplace netloc clk_wiz_0_locked 1 3 2 NJ 550 NJ
+preplace netloc clocker_0_out_bclock 1 3 2 1010 70 NJ
+preplace netloc triangle_sampler_0_audio_data 1 1 1 320J
+preplace netloc driver_output_0_out_sdata 1 4 1 NJ
+preplace netloc switcher_0_out_R 1 2 1 N
+preplace netloc square_sampler_0_audio_data 1 1 1 NJ
+preplace netloc level_control_0_data_out 1 3 1 1000
+preplace netloc clk_wiz_0_clk_12288 1 1 3 340 330 670 400 1010
+preplace netloc sys_clock_1 1 0 3 NJ 580 NJ 580 NJ
+preplace netloc source_switch_1 1 0 2 NJ 90 320J
+preplace netloc btn_vol_up_1 1 0 3 NJ 40 NJ 40 680
+preplace netloc switcher_0_out_L 1 2 1 670
+preplace netloc sinus_sampler_0_audio_data 1 1 1 330
+preplace netloc reset_1 1 0 3 NJ 560 NJ 560 NJ
+preplace netloc level_control_1_data_out 1 3 1 N
+levelinfo -pg 1 0 170 500 840 1180 1350 -top 0 -bot 640
+",
+}
+{
+   da_board_cnt: "2",
+}
