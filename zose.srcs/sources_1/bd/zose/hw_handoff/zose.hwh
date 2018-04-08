@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Apr  3 21:03:37 2018" VIVADOVERSION="2017.4">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Apr  8 21:41:30 2018" VIVADOVERSION="2017.4">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:arty-a7-35:part0:1.0" DEVICE="7a35ti" NAME="zose" PACKAGE="csg324" SPEEDGRADE="-1L"/>
 
   <EXTERNALPORTS>
+    <PORT DIR="I" NAME="btn_f_up" SIGIS="undef"/>
+    <PORT DIR="I" NAME="btn_f_down" SIGIS="undef"/>
+    <PORT DIR="I" NAME="btn_vol_up" SIGIS="undef"/>
+    <PORT DIR="I" NAME="btn_vol_down" SIGIS="undef"/>
     <PORT DIR="I" NAME="reset" SIGIS="rst" SIGNAME="External_Ports_reset">
       <CONNECTIONS>
         <CONNECTION INSTANCE="clk_wiz_0" PORT="resetn"/>
@@ -14,19 +18,9 @@
         <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_in1"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" NAME="source_switch" SIGIS="undef" SIGNAME="External_Ports_source_switch">
+    <PORT CLKFREQUENCY="12288135" DIR="O" NAME="mclock" SIGIS="clk" SIGNAME="clk_wiz_0_clk_12288">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="switcher_0" PORT="source_switch"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="bclock" SIGIS="clk" SIGNAME="clocker_0_out_bclock">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="clocker_0" PORT="out_bclock"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="mclock" SIGIS="clk" SIGNAME="clk_wiz_0_clk_100">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_100"/>
+        <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_12288"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="100000000" DIR="O" NAME="lrclock" SIGIS="clk" SIGNAME="clocker_0_out_lrclock">
@@ -34,28 +28,25 @@
         <CONNECTION INSTANCE="clocker_0" PORT="out_lrclock"/>
       </CONNECTIONS>
     </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="bclock" SIGIS="clk" SIGNAME="clocker_0_out_bclock">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="clocker_0" PORT="out_bclock"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="source_switch" SIGIS="undef" SIGNAME="External_Ports_source_switch">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="External_Ports" PORT="led"/>
+        <CONNECTION INSTANCE="switcher_0" PORT="source_switch"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="3" NAME="led" RIGHT="0" SIGIS="data" SIGNAME="External_Ports_source_switch">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="External_Ports" PORT="source_switch"/>
+      </CONNECTIONS>
+    </PORT>
     <PORT DIR="O" NAME="sdata" SIGIS="data" SIGNAME="driver_output_0_out_sdata">
       <CONNECTIONS>
         <CONNECTION INSTANCE="driver_output_0" PORT="out_sdata"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="3" NAME="led" RIGHT="0" SIGIS="data" SIGNAME="clk_wiz_0_locked">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="clk_wiz_0" PORT="locked"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="btn_f_up" SIGIS="undef"/>
-    <PORT DIR="I" NAME="btn_f_down" SIGIS="undef"/>
-    <PORT DIR="I" NAME="btn_vol_up" SIGIS="undef" SIGNAME="External_Ports_btn_vol_up">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="level_control_0" PORT="up"/>
-        <CONNECTION INSTANCE="level_control_1" PORT="up"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="btn_vol_down" SIGIS="undef" SIGNAME="External_Ports_btn_vol_down">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="level_control_0" PORT="down"/>
-        <CONNECTION INSTANCE="level_control_1" PORT="down"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -643,26 +634,21 @@
             <CONNECTION INSTANCE="External_Ports" PORT="sys_clock"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="locked" SIGIS="undef" SIGNAME="clk_wiz_0_locked">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="led"/>
-          </CONNECTIONS>
-        </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="O" NAME="clk_100" SIGIS="clk" SIGNAME="clk_wiz_0_clk_100">
           <CONNECTIONS>
             <CONNECTION INSTANCE="square_sampler_0" PORT="clock"/>
-            <CONNECTION INSTANCE="triangle_sampler_0" PORT="clock"/>
             <CONNECTION INSTANCE="sinus_sampler_0" PORT="clock"/>
-            <CONNECTION INSTANCE="driver_output_0" PORT="in_mclock"/>
-            <CONNECTION INSTANCE="External_Ports" PORT="mclock"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="12288135" DIR="O" NAME="clk_12288" SIGIS="clk" SIGNAME="clk_wiz_0_clk_12288">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="mclock"/>
             <CONNECTION INSTANCE="clocker_0" PORT="in_12288"/>
             <CONNECTION INSTANCE="switcher_0" PORT="clk"/>
+            <CONNECTION INSTANCE="driver_output_0" PORT="in_mclock"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="O" NAME="locked" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -680,14 +666,14 @@
         </PORT>
         <PORT DIR="O" NAME="out_lrclock" SIGIS="undef" SIGNAME="clocker_0_out_lrclock">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="driver_output_0" PORT="in_lrclock"/>
             <CONNECTION INSTANCE="External_Ports" PORT="lrclock"/>
+            <CONNECTION INSTANCE="driver_output_0" PORT="in_lrclock"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="out_bclock" SIGIS="undef" SIGNAME="clocker_0_out_bclock">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="driver_output_0" PORT="in_bclock"/>
             <CONNECTION INSTANCE="External_Ports" PORT="bclock"/>
+            <CONNECTION INSTANCE="driver_output_0" PORT="in_bclock"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -710,84 +696,24 @@
             <CONNECTION INSTANCE="clocker_0" PORT="out_lrclock"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="in_mclock" SIGIS="undef" SIGNAME="clk_wiz_0_clk_100">
+        <PORT DIR="I" NAME="in_mclock" SIGIS="undef" SIGNAME="clk_wiz_0_clk_12288">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_100"/>
+            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_12288"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="in_data_l" RIGHT="0" SIGIS="undef" SIGNAME="level_control_0_data_out">
+        <PORT DIR="I" LEFT="15" NAME="in_data_l" RIGHT="0" SIGIS="undef" SIGNAME="switcher_0_out_L">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="level_control_0" PORT="data_out"/>
+            <CONNECTION INSTANCE="switcher_0" PORT="out_L"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="in_data_r" RIGHT="0" SIGIS="undef" SIGNAME="level_control_1_data_out">
+        <PORT DIR="I" LEFT="15" NAME="in_data_r" RIGHT="0" SIGIS="undef" SIGNAME="switcher_0_out_R">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="level_control_1" PORT="data_out"/>
+            <CONNECTION INSTANCE="switcher_0" PORT="out_R"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="out_sdata" SIGIS="undef" SIGNAME="driver_output_0_out_sdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="sdata"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE FULLNAME="/level_control_0" HWVERSION="1.0" INSTANCE="level_control_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="level_control" VLNV="xilinx.com:module_ref:level_control:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="zose_level_control_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="15" NAME="data_in" RIGHT="0" SIGIS="undef" SIGNAME="switcher_0_out_L">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="switcher_0" PORT="out_L"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="up" SIGIS="undef" SIGNAME="External_Ports_btn_vol_up">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="btn_vol_up"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="down" SIGIS="undef" SIGNAME="External_Ports_btn_vol_down">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="btn_vol_down"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="level_control_0_data_out">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="driver_output_0" PORT="in_data_l"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE FULLNAME="/level_control_1" HWVERSION="1.0" INSTANCE="level_control_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="level_control" VLNV="xilinx.com:module_ref:level_control:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="zose_level_control_1_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="15" NAME="data_in" RIGHT="0" SIGIS="undef" SIGNAME="switcher_0_out_R">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="switcher_0" PORT="out_R"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="up" SIGIS="undef" SIGNAME="External_Ports_btn_vol_up">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="btn_vol_up"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="down" SIGIS="undef" SIGNAME="External_Ports_btn_vol_down">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="btn_vol_down"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="level_control_1_data_out">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="driver_output_0" PORT="in_data_r"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -829,6 +755,7 @@
         <PORT DIR="O" LEFT="15" NAME="audio_data" RIGHT="0" SIGIS="undef" SIGNAME="square_sampler_0_audio_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="switcher_0" PORT="in_A_L"/>
+            <CONNECTION INSTANCE="switcher_0" PORT="in_A_R"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -856,9 +783,9 @@
             <CONNECTION INSTANCE="square_sampler_0" PORT="audio_data"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="in_A_R" RIGHT="0" SIGIS="undef" SIGNAME="triangle_sampler_0_audio_data">
+        <PORT DIR="I" LEFT="15" NAME="in_A_R" RIGHT="0" SIGIS="undef" SIGNAME="square_sampler_0_audio_data">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="triangle_sampler_0" PORT="audio_data"/>
+            <CONNECTION INSTANCE="square_sampler_0" PORT="audio_data"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="15" NAME="in_B_L" RIGHT="0" SIGIS="undef" SIGNAME="sinus_sampler_0_audio_data">
@@ -873,32 +800,12 @@
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="out_L" RIGHT="0" SIGIS="undef" SIGNAME="switcher_0_out_L">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="level_control_0" PORT="data_in"/>
+            <CONNECTION INSTANCE="driver_output_0" PORT="in_data_l"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="out_R" RIGHT="0" SIGIS="undef" SIGNAME="switcher_0_out_R">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="level_control_1" PORT="data_in"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE FULLNAME="/triangle_sampler_0" HWVERSION="1.0" INSTANCE="triangle_sampler_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="triangle_sampler" VLNV="xilinx.com:module_ref:triangle_sampler:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="zose_triangle_sampler_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clock" SIGIS="clk" SIGNAME="clk_wiz_0_clk_100">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_100"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="audio_data" RIGHT="0" SIGIS="undef" SIGNAME="triangle_sampler_0_audio_data">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="switcher_0" PORT="in_A_R"/>
+            <CONNECTION INSTANCE="driver_output_0" PORT="in_data_r"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

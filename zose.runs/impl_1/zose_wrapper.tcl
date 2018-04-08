@@ -163,7 +163,7 @@ set rc [catch {
   create_msg_db write_bitstream.pb
   set_property XPM_LIBRARIES XPM_CDC [current_project]
   catch { write_mem_info -force zose_wrapper.mmi }
-  write_bitstream -force zose_wrapper.bit 
+  write_bitstream -force zose_wrapper.bit -bin_file
   catch { write_sysdef -hwdef zose_wrapper.hwdef -bitfile zose_wrapper.bit -meminfo zose_wrapper.mmi -file zose_wrapper.sysdef }
   catch {write_debug_probes -quiet -force zose_wrapper}
   catch {file copy -force zose_wrapper.ltx debug_nets.ltx}

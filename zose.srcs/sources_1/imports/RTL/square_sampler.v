@@ -5,23 +5,24 @@ module square_sampler(
 		output reg signed [15:0] audio_data
 		);
 		
-		reg [18:0] i;
+		reg [16:0] i;
 
 		initial begin
-			audio_data = 0;
+			audio_data = -30000;
 			i = 0;
 		end
 
 		always@ (posedge(clock))
 		begin
-			if(i < 149999) begin
-				audio_data <= 32700;				
-			end else if (i < 299999) begin
-				audio_data <= -32701;
-			end else begin
+			i <= i + 1;
+			if(i == 50000) begin
+				if (audio_data == 30000) begin
+					audio_data <= -30000;
+				end else if(audio_data == -30000) begin
+					audio_data <= 30000;
+				end
 				i <= 0;
 			end
-			i <= i + 1;
 		end
 
 endmodule

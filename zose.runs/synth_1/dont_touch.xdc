@@ -24,13 +24,4 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==zose_switcher_0
 # IP: bd/zose/ip/zose_sinus_sampler_0_0/zose_sinus_sampler_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==zose_sinus_sampler_0_0 || ORIG_REF_NAME==zose_sinus_sampler_0_0} -quiet] -quiet
 
-# IP: bd/zose/ip/zose_triangle_sampler_0_0/zose_triangle_sampler_0_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==zose_triangle_sampler_0_0 || ORIG_REF_NAME==zose_triangle_sampler_0_0} -quiet] -quiet
-
-# IP: bd/zose/ip/zose_level_control_0_0/zose_level_control_0_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==zose_level_control_0_0 || ORIG_REF_NAME==zose_level_control_0_0} -quiet] -quiet
-
-# IP: bd/zose/ip/zose_level_control_1_0/zose_level_control_1_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==zose_level_control_1_0 || ORIG_REF_NAME==zose_level_control_1_0} -quiet] -quiet
-
 # XDC: bd/zose/zose_ooc.xdc

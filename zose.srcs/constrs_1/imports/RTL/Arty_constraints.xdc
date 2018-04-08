@@ -3,8 +3,6 @@
 set_property -dict { PACKAGE_PIN E3    IOSTANDARD LVCMOS33 } [get_ports { sys_clock }]; #IO_L12P_T1_MRCC_35 Sch=gclk[100]
 create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports {sys_clock}];
 
-set_property -dict { PACKAGE_PIN G18    IOSTANDARD LVCMOS33 } [get_ports { eth_ref_clk }]; #         Sch=eth_ref_clk
-
 # i2s
 set_property -dict { PACKAGE_PIN G13   IOSTANDARD LVCMOS33 } [get_ports { sdata }];
 set_property -dict { PACKAGE_PIN B11   IOSTANDARD LVCMOS33 } [get_ports { bclock }];
