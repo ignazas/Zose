@@ -7,7 +7,7 @@
 //Design      : zose_wrapper
 //Purpose     : IP block netlist
 //--------------------------------------------------------------------------------
-`timescale 1 ps / 1 ps
+`timescale 1ns / 1ps
 
 module zose_synth
 (bclock,
@@ -18,7 +18,6 @@ module zose_synth
 	led,
 	lrclock,
 	mclock,
-	reset,
 	sdata,
 	source_switch);
 output bclock;
@@ -29,7 +28,6 @@ input btn_vol_up;
 output [3:0]led;
 output lrclock;
 output mclock;
-input reset;
 output sdata;
 input source_switch;
 
@@ -41,7 +39,6 @@ wire btn_vol_up;
 wire [3:0]led;
 wire lrclock;
 wire mclock;
-wire reset;
 wire sdata;
 wire source_switch;
 reg sys_clock;
@@ -63,7 +60,6 @@ zose testbench
 	.led(led),
 	.lrclock(lrclock),
 	.mclock(mclock),
-	.reset(reset),
 	.sdata(sdata),
 	.source_switch(source_switch),
 	.sys_clock(sys_clock));

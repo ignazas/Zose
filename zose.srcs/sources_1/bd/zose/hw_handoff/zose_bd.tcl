@@ -20,7 +20,7 @@ set script_folder [_tcl::get_script_folder]
 ################################################################
 # Check if script is running in correct Vivado version.
 ################################################################
-set scripts_vivado_version 2017.4
+set scripts_vivado_version 2018.1
 set current_vivado_version [version -short]
 
 if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# clocker, driver_output, sinus_sampler, square_sampler, switcher
+# clocker, driver_output_32, sinus_sampler
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -51,7 +51,6 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 set list_projs [get_projects -quiet]
 if { $list_projs eq "" } {
    create_project project_1 myproj -part xc7a35ticsg324-1L
-   set_property BOARD_PART digilentinc.com:arty-a7-35:part0:1.0 [current_project]
 }
 
 
@@ -173,10 +172,6 @@ proc create_root_design { parentCell } {
   set led [ create_bd_port -dir O -from 3 -to 0 -type data led ]
   set lrclock [ create_bd_port -dir O -type clk lrclock ]
   set mclock [ create_bd_port -dir O -type clk mclock ]
-  set reset [ create_bd_port -dir I -type rst reset ]
-  set_property -dict [ list \
-   CONFIG.POLARITY {ACTIVE_LOW} \
- ] $reset
   set sdata [ create_bd_port -dir O -type data sdata ]
   set source_switch [ create_bd_port -dir I source_switch ]
   set sys_clock [ create_bd_port -dir I -type clk sys_clock ]
@@ -186,32 +181,44 @@ proc create_root_design { parentCell } {
  ] $sys_clock
 
   # Create instance: clk_wiz_0, and set properties
-  set clk_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:5.4 clk_wiz_0 ]
+  set clk_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_0 ]
   set_property -dict [ list \
-   CONFIG.CLKOUT1_JITTER {146.380} \
-   CONFIG.CLKOUT1_PHASE_ERROR {119.384} \
-   CONFIG.CLKOUT2_JITTER {223.282} \
-   CONFIG.CLKOUT2_PHASE_ERROR {119.384} \
+   CONFIG.CLKOUT1_DRIVES {BUFG} \
+   CONFIG.CLKOUT1_JITTER {144.906} \
+   CONFIG.CLKOUT1_PHASE_ERROR {134.075} \
+   CONFIG.CLKOUT1_REQUESTED_DUTY_CYCLE {50.000} \
+   CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {24.576} \
+   CONFIG.CLKOUT1_USED {true} \
+   CONFIG.CLKOUT2_DRIVES {BUFG} \
+   CONFIG.CLKOUT2_JITTER {137.681} \
+   CONFIG.CLKOUT2_PHASE_ERROR {105.461} \
    CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {12.288} \
-   CONFIG.CLKOUT2_USED {true} \
-   CONFIG.CLKOUT3_JITTER {149.337} \
-   CONFIG.CLKOUT3_PHASE_ERROR {122.577} \
-   CONFIG.CLKOUT3_REQUESTED_OUT_FREQ {100.000} \
-   CONFIG.CLKOUT3_USED {false} \
-   CONFIG.CLK_IN1_BOARD_INTERFACE {sys_clock} \
-   CONFIG.CLK_OUT1_PORT {clk_100} \
+   CONFIG.CLKOUT2_USED {false} \
+   CONFIG.CLKOUT3_DRIVES {BUFG} \
+   CONFIG.CLKOUT4_DRIVES {BUFG} \
+   CONFIG.CLKOUT5_DRIVES {BUFG} \
+   CONFIG.CLKOUT6_DRIVES {BUFG} \
+   CONFIG.CLKOUT7_DRIVES {BUFG} \
+   CONFIG.CLK_OUT1_PORT {clk_24586} \
    CONFIG.CLK_OUT2_PORT {clk_12288} \
-   CONFIG.CLK_OUT3_PORT {clk_out3} \
-   CONFIG.MMCM_CLKFBOUT_MULT_F {7.250} \
-   CONFIG.MMCM_CLKOUT0_DIVIDE_F {7.250} \
-   CONFIG.MMCM_CLKOUT1_DIVIDE {59} \
-   CONFIG.MMCM_CLKOUT2_DIVIDE {1} \
-   CONFIG.MMCM_DIVCLK_DIVIDE {1} \
-   CONFIG.NUM_OUT_CLKS {2} \
-   CONFIG.RESET_BOARD_INTERFACE {reset} \
+   CONFIG.ENABLE_CLOCK_MONITOR {false} \
+   CONFIG.FEEDBACK_SOURCE {FDBK_AUTO} \
+   CONFIG.JITTER_SEL {Min_O_Jitter} \
+   CONFIG.MMCM_BANDWIDTH {HIGH} \
+   CONFIG.MMCM_CLKFBOUT_MULT_F {29} \
+   CONFIG.MMCM_CLKIN1_PERIOD {10.000} \
+   CONFIG.MMCM_CLKIN2_PERIOD {10.000} \
+   CONFIG.MMCM_CLKOUT0_DIVIDE_F {59} \
+   CONFIG.MMCM_CLKOUT0_DUTY_CYCLE {0.500} \
+   CONFIG.MMCM_CLKOUT1_DIVIDE {1} \
+   CONFIG.MMCM_COMPENSATION {ZHOLD} \
+   CONFIG.MMCM_DIVCLK_DIVIDE {2} \
+   CONFIG.NUM_OUT_CLKS {1} \
+   CONFIG.PRIMITIVE {PLL} \
    CONFIG.RESET_PORT {resetn} \
    CONFIG.RESET_TYPE {ACTIVE_LOW} \
-   CONFIG.USE_BOARD_FLOW {true} \
+   CONFIG.USE_LOCKED {true} \
+   CONFIG.USE_RESET {false} \
  ] $clk_wiz_0
 
   # Create instance: clocker_0, and set properties
@@ -225,13 +232,13 @@ proc create_root_design { parentCell } {
      return 1
    }
   
-  # Create instance: driver_output_0, and set properties
-  set block_name driver_output
-  set block_cell_name driver_output_0
-  if { [catch {set driver_output_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+  # Create instance: driver_output_32_0, and set properties
+  set block_name driver_output_32
+  set block_cell_name driver_output_32_0
+  if { [catch {set driver_output_32_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
      catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
-   } elseif { $driver_output_0 eq "" } {
+   } elseif { $driver_output_32_0 eq "" } {
      catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -247,40 +254,15 @@ proc create_root_design { parentCell } {
      return 1
    }
   
-  # Create instance: square_sampler_0, and set properties
-  set block_name square_sampler
-  set block_cell_name square_sampler_0
-  if { [catch {set square_sampler_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $square_sampler_0 eq "" } {
-     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
-  # Create instance: switcher_0, and set properties
-  set block_name switcher
-  set block_cell_name switcher_0
-  if { [catch {set switcher_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $switcher_0 eq "" } {
-     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
   # Create port connections
-  connect_bd_net -net clk_wiz_0_clk_100 [get_bd_pins clk_wiz_0/clk_100] [get_bd_pins sinus_sampler_0/clock] [get_bd_pins square_sampler_0/clock]
-  connect_bd_net -net clk_wiz_0_clk_12288 [get_bd_ports mclock] [get_bd_pins clk_wiz_0/clk_12288] [get_bd_pins clocker_0/in_12288] [get_bd_pins driver_output_0/in_mclock] [get_bd_pins switcher_0/clk]
-  connect_bd_net -net clocker_0_out_bclock [get_bd_ports bclock] [get_bd_pins clocker_0/out_bclock] [get_bd_pins driver_output_0/in_bclock]
-  connect_bd_net -net clocker_0_out_lrclock [get_bd_ports lrclock] [get_bd_pins clocker_0/out_lrclock] [get_bd_pins driver_output_0/in_lrclock]
-  connect_bd_net -net driver_output_0_out_sdata [get_bd_ports sdata] [get_bd_pins driver_output_0/out_sdata]
-  connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins clk_wiz_0/resetn]
-  connect_bd_net -net sinus_sampler_0_audio_data [get_bd_pins sinus_sampler_0/audio_data] [get_bd_pins switcher_0/in_B_L] [get_bd_pins switcher_0/in_B_R]
-  connect_bd_net -net source_switch_1 [get_bd_ports led] [get_bd_ports source_switch] [get_bd_pins switcher_0/source_switch]
-  connect_bd_net -net square_sampler_0_audio_data [get_bd_pins square_sampler_0/audio_data] [get_bd_pins switcher_0/in_A_L] [get_bd_pins switcher_0/in_A_R]
-  connect_bd_net -net switcher_0_out_L [get_bd_pins driver_output_0/in_data_l] [get_bd_pins switcher_0/out_L]
-  connect_bd_net -net switcher_0_out_R [get_bd_pins driver_output_0/in_data_r] [get_bd_pins switcher_0/out_R]
+  connect_bd_net -net btn_f_down_1 [get_bd_ports btn_f_down] [get_bd_pins sinus_sampler_0/f_down]
+  connect_bd_net -net btn_f_up_1 [get_bd_ports btn_f_up] [get_bd_pins sinus_sampler_0/f_up]
+  connect_bd_net -net clk_wiz_0_clk_12288 [get_bd_ports mclock] [get_bd_pins clk_wiz_0/clk_24586] [get_bd_pins clocker_0/in_12288] [get_bd_pins driver_output_32_0/in_mclock] [get_bd_pins sinus_sampler_0/clk]
+  connect_bd_net -net clocker_0_out_bclock_32 [get_bd_ports bclock] [get_bd_pins clocker_0/out_bclock_32]
+  connect_bd_net -net clocker_0_out_lrclock [get_bd_ports lrclock] [get_bd_pins clocker_0/out_lrclock] [get_bd_pins driver_output_32_0/in_lrclock]
+  connect_bd_net -net driver_output_32_0_out_sdata [get_bd_ports sdata] [get_bd_pins driver_output_32_0/out_sdata]
+  connect_bd_net -net sinus_sampler_0_audio_data [get_bd_pins driver_output_32_0/in_data_l] [get_bd_pins driver_output_32_0/in_data_r] [get_bd_pins sinus_sampler_0/audio_data]
+  connect_bd_net -net source_switch_1 [get_bd_ports led] [get_bd_ports source_switch]
   connect_bd_net -net sys_clock_1 [get_bd_ports sys_clock] [get_bd_pins clk_wiz_0/clk_in1]
 
   # Create address segments

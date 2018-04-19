@@ -1,40 +1,35 @@
 {
    ExpandedHierarchyInLayout: "",
-   guistr: "# # String gsaved with Nlview 6.6.11  2017-06-12 bk=1.3860 VDI=40 GEI=35 GUI=JA:1.6
+   guistr: "# # String gsaved with Nlview 6.8.5  2018-01-30 bk=1.4354 VDI=40 GEI=35 GUI=JA:1.6 non-TLS
 #  -string -flagsOSRD
-preplace port bclock -pg 1 -y 80 -defaultsOSRD
-preplace port mclock -pg 1 -y 360 -defaultsOSRD
-preplace port btn_f_up -pg 1 -y 40 -defaultsOSRD
-preplace port source_switch -pg 1 -y 80 -defaultsOSRD
-preplace port btn_vol_up -pg 1 -y 100 -defaultsOSRD
-preplace port sys_clock -pg 1 -y 430 -defaultsOSRD
-preplace port sdata -pg 1 -y 200 -defaultsOSRD
+preplace port bclock -pg 1 -y 100 -defaultsOSRD
+preplace port mclock -pg 1 -y 280 -defaultsOSRD
+preplace port btn_f_up -pg 1 -y 220 -defaultsOSRD
+preplace port source_switch -pg 1 -y 440 -defaultsOSRD
+preplace port btn_vol_up -pg 1 -y 40 -defaultsOSRD
+preplace port sys_clock -pg 1 -y 370 -defaultsOSRD
+preplace port sdata -pg 1 -y 190 -defaultsOSRD
 preplace port lrclock -pg 1 -y 60 -defaultsOSRD
-preplace port btn_vol_down -pg 1 -y 60 -defaultsOSRD
-preplace port btn_f_down -pg 1 -y 20 -defaultsOSRD
-preplace port reset -pg 1 -y 410 -defaultsOSRD
-preplace portBus led -pg 1 -y 340 -defaultsOSRD
-preplace inst driver_output_0 -pg 1 -lvl 3 -y 200 -defaultsOSRD
-preplace inst sinus_sampler_0 -pg 1 -lvl 1 -y 280 -defaultsOSRD
-preplace inst square_sampler_0 -pg 1 -lvl 1 -y 150 -defaultsOSRD
-preplace inst switcher_0 -pg 1 -lvl 2 -y 230 -defaultsOSRD
-preplace inst clocker_0 -pg 1 -lvl 2 -y 70 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 2 -y 420 -defaultsOSRD
-preplace netloc clk_wiz_0_clk_100 1 0 3 20 350 NJ 350 670
-preplace netloc clocker_0_out_lrclock 1 2 2 680 60 NJ
-preplace netloc clocker_0_out_bclock 1 2 2 670 80 NJ
-preplace netloc driver_output_0_out_sdata 1 3 1 NJ
-preplace netloc switcher_0_out_R 1 2 1 N
-preplace netloc square_sampler_0_audio_data 1 1 1 320
-preplace netloc clk_wiz_0_clk_12288 1 1 3 350 330 680 360 NJ
-preplace netloc sys_clock_1 1 0 2 NJ 430 NJ
-preplace netloc source_switch_1 1 0 4 NJ 80 330 340 NJ 340 NJ
-preplace netloc switcher_0_out_L 1 2 1 N
-preplace netloc sinus_sampler_0_audio_data 1 1 1 340
-preplace netloc reset_1 1 0 2 NJ 410 NJ
-levelinfo -pg 1 0 170 510 830 1000 -top 0 -bot 490
+preplace port btn_vol_down -pg 1 -y 20 -defaultsOSRD
+preplace port btn_f_down -pg 1 -y 240 -defaultsOSRD
+preplace portBus led -pg 1 -y 440 -defaultsOSRD
+preplace inst driver_output_32_0 -pg 1 -lvl 2 -y 190 -defaultsOSRD
+preplace inst sinus_sampler_0 -pg 1 -lvl 1 -y 220 -defaultsOSRD
+preplace inst filterfir_0 -pg 1 -lvl 2 -y 360 -defaultsOSRD
+preplace inst clocker_0 -pg 1 -lvl 1 -y 80 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -y 370 -defaultsOSRD
+preplace netloc clocker_0_out_lrclock 1 1 2 280 60 NJ
+preplace netloc clk_wiz_0_clk_12288 1 0 3 20 300 280 280 NJ
+preplace netloc btn_f_down_1 1 0 1 NJ
+preplace netloc driver_output_32_0_out_sdata 1 2 1 NJ
+preplace netloc sys_clock_1 1 0 1 NJ
+preplace netloc clocker_0_out_bclock_32 1 1 2 NJ 100 NJ
+preplace netloc source_switch_1 1 0 3 NJ 440 NJ 440 NJ
+preplace netloc sinus_sampler_0_audio_data 1 1 1 290
+preplace netloc btn_f_up_1 1 0 1 NJ
+levelinfo -pg 1 0 150 420 570 -top 0 -bot 600
 ",
 }
 {
-   da_board_cnt: "2",
+   da_board_cnt: "3",
 }

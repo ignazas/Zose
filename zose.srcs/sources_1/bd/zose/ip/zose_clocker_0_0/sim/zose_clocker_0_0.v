@@ -56,16 +56,19 @@
 module zose_clocker_0_0 (
   in_12288,
   out_lrclock,
-  out_bclock
+  out_bclock_16,
+  out_bclock_32
 );
 
 input wire in_12288;
 output wire out_lrclock;
-output wire out_bclock;
+output wire out_bclock_16;
+output wire out_bclock_32;
 
   clocker inst (
     .in_12288(in_12288),
     .out_lrclock(out_lrclock),
-    .out_bclock(out_bclock)
+    .out_bclock_16(out_bclock_16),
+    .out_bclock_32(out_bclock_32)
   );
 endmodule

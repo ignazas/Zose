@@ -68,7 +68,6 @@ set rc [catch {
   create_msg_db init_design.pb
   set_param xicom.use_bs_reader 1
   create_project -in_memory -part xc7a35ticsg324-1L
-  set_property board_part digilentinc.com:arty-a7-35:part0:1.0 [current_project]
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
   set_property webtalk.parent_dir E:/Development/zose/zose.cache/wt [current_project]
@@ -117,7 +116,9 @@ start_step place_design
 set ACTIVE_STEP place_design
 set rc [catch {
   create_msg_db place_design.pb
-  implement_debug_core 
+  if { [llength [get_debug_cores -quiet] ] > 0 }  { 
+    implement_debug_core 
+  } 
   place_design 
   write_checkpoint -force zose_wrapper_placed.dcp
   create_report "impl_1_place_report_io_0" "report_io -file zose_wrapper_io_placed.rpt"
@@ -143,9 +144,10 @@ set rc [catch {
   create_report "impl_1_route_report_methodology_0" "report_methodology -file zose_wrapper_methodology_drc_routed.rpt -pb zose_wrapper_methodology_drc_routed.pb -rpx zose_wrapper_methodology_drc_routed.rpx"
   create_report "impl_1_route_report_power_0" "report_power -file zose_wrapper_power_routed.rpt -pb zose_wrapper_power_summary_routed.pb -rpx zose_wrapper_power_routed.rpx"
   create_report "impl_1_route_report_route_status_0" "report_route_status -file zose_wrapper_route_status.rpt -pb zose_wrapper_route_status.pb"
-  create_report "impl_1_route_report_timing_summary_0" "report_timing_summary -max_paths 10 -file zose_wrapper_timing_summary_routed.rpt -rpx zose_wrapper_timing_summary_routed.rpx -warn_on_violation "
+  create_report "impl_1_route_report_timing_summary_0" "report_timing_summary -max_paths 10 -file zose_wrapper_timing_summary_routed.rpt -pb zose_wrapper_timing_summary_routed.pb -rpx zose_wrapper_timing_summary_routed.rpx -warn_on_violation "
   create_report "impl_1_route_report_incremental_reuse_0" "report_incremental_reuse -file zose_wrapper_incremental_reuse_routed.rpt"
   create_report "impl_1_route_report_clock_utilization_0" "report_clock_utilization -file zose_wrapper_clock_utilization_routed.rpt"
+  create_report "impl_1_route_report_bus_skew_0" "report_bus_skew -warn_on_violation -file route_report_bus_skew_0.rpt -rpx route_report_bus_skew_0.rpx"
   close_msg_db -file route_design.pb
 } RESULT]
 if {$rc} {

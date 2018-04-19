@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="zose_synth_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="zose_synth" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="624832401673fs"></ZoomStartTime>
+      <ZoomEndTime time="647881656132fs"></ZoomEndTime>
+      <Cursor1Time time="1001000000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="142"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="14" />
+   <wave_markers>
+      <marker time="9000612931000" label="" />
+      <marker time="1500695689000" label="" />
+   </wave_markers>
+   <wvobject fp_name="/zose_synth/testbench/clocker_0/inst/in_12288" type="logic">
+      <obj_property name="ElementShortName">in_12288</obj_property>
+      <obj_property name="ObjectShortName">in_12288</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zose_synth/testbench/clocker_0/inst/out_lrclock" type="logic">
+      <obj_property name="ElementShortName">out_lrclock</obj_property>
+      <obj_property name="ObjectShortName">out_lrclock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zose_synth/testbench/clocker_0/inst/out_bclock_16" type="logic">
+      <obj_property name="ElementShortName">out_bclock_16</obj_property>
+      <obj_property name="ObjectShortName">out_bclock_16</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zose_synth/testbench/clocker_0/inst/out_bclock_32" type="logic">
+      <obj_property name="ElementShortName">out_bclock_32</obj_property>
+      <obj_property name="ObjectShortName">out_bclock_32</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zose_synth/testbench/clocker_0/inst/lrclk_divider" type="array">
+      <obj_property name="ElementShortName">lrclk_divider[4:0]</obj_property>
+      <obj_property name="ObjectShortName">lrclk_divider[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zose_synth/testbench/clocker_0/inst/bclk_divider_16" type="array">
+      <obj_property name="ElementShortName">bclk_divider_16[4:0]</obj_property>
+      <obj_property name="ObjectShortName">bclk_divider_16[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zose_synth/testbench/clocker_0/inst/bclk_divider_32" type="array">
+      <obj_property name="ElementShortName">bclk_divider_32[4:0]</obj_property>
+      <obj_property name="ObjectShortName">bclk_divider_32[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zose_synth/testbench/driver_output_32_0/in_lrclock" type="logic">
+      <obj_property name="ElementShortName">in_lrclock</obj_property>
+      <obj_property name="ObjectShortName">in_lrclock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zose_synth/testbench/driver_output_32_0/in_data_l" type="array">
+      <obj_property name="ElementShortName">in_data_l[31:0]</obj_property>
+      <obj_property name="ObjectShortName">in_data_l[31:0]</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
+      <obj_property name="CellHeight">150</obj_property>
+      <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_AUTO</obj_property>
+      <obj_property name="AnalogYRangeMin">0.000000</obj_property>
+      <obj_property name="AnalogYRRangeMax">0.000000</obj_property>
+      <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_HOLD</obj_property>
+      <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_OVERLAP</obj_property>
+      <obj_property name="AnalogHorizLine">0.000000</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zose_synth/testbench/sinus_sampler_0/inst/i" type="array">
+      <obj_property name="ElementShortName">i[10:0]</obj_property>
+      <obj_property name="ObjectShortName">i[10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zose_synth/testbench/sinus_sampler_0/inst/freq_counter" type="array">
+      <obj_property name="ElementShortName">freq_counter[9:0]</obj_property>
+      <obj_property name="ObjectShortName">freq_counter[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zose_synth/testbench/driver_output_32_0/in_mclock" type="logic">
+      <obj_property name="ElementShortName">in_mclock</obj_property>
+      <obj_property name="ObjectShortName">in_mclock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zose_synth/testbench/driver_output_32_0/out_sdata" type="logic">
+      <obj_property name="ElementShortName">out_sdata</obj_property>
+      <obj_property name="ObjectShortName">out_sdata</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zose_synth/testbench/driver_output_32_0/inst/out_pdata" type="array">
+      <obj_property name="ElementShortName">out_pdata[63:0]</obj_property>
+      <obj_property name="ObjectShortName">out_pdata[63:0]</obj_property>
+   </wvobject>
+</wave_config>

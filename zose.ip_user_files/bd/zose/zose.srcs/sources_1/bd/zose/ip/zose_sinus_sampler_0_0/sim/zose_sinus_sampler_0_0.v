@@ -54,17 +54,23 @@
 
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module zose_sinus_sampler_0_0 (
-  clock,
+  clk,
+  f_up,
+  f_down,
   audio_data
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clock, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clock CLK" *)
-input wire clock;
-output wire [15 : 0] audio_data;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 24576271, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
+input wire clk;
+input wire f_up;
+input wire f_down;
+output wire [31 : 0] audio_data;
 
   sinus_sampler inst (
-    .clock(clock),
+    .clk(clk),
+    .f_up(f_up),
+    .f_down(f_down),
     .audio_data(audio_data)
   );
 endmodule

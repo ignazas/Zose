@@ -56,8 +56,7 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// _clk_100___100.000______0.000______50.0______146.380____119.384
-// clk_12288____12.288______0.000______50.0______223.282____119.384
+// clk_24586____24.576______0.000______50.0______144.906____134.075
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -70,10 +69,8 @@ module zose_clk_wiz_0_0_clk_wiz
 
  (// Clock in ports
   // Clock out ports
-  output        clk_100,
-  output        clk_12288,
+  output        clk_24586,
   // Status and control signals
-  input         resetn,
   output        locked,
   input         clk_in1
  );
@@ -95,7 +92,7 @@ wire clk_in2_zose_clk_wiz_0_0;
   //    * Unused inputs are tied off
   //    * Unused outputs are labeled unused
 
-  wire        clk_100_zose_clk_wiz_0_0;
+  wire        clk_24586_zose_clk_wiz_0_0;
   wire        clk_12288_zose_clk_wiz_0_0;
   wire        clk_out3_zose_clk_wiz_0_0;
   wire        clk_out4_zose_clk_wiz_0_0;
@@ -110,53 +107,36 @@ wire clk_in2_zose_clk_wiz_0_0;
   wire        clkfbout_zose_clk_wiz_0_0;
   wire        clkfbout_buf_zose_clk_wiz_0_0;
   wire        clkfboutb_unused;
-    wire clkout0b_unused;
-   wire clkout1b_unused;
+   wire clkout1_unused;
    wire clkout2_unused;
-   wire clkout2b_unused;
    wire clkout3_unused;
-   wire clkout3b_unused;
    wire clkout4_unused;
   wire        clkout5_unused;
   wire        clkout6_unused;
   wire        clkfbstopped_unused;
   wire        clkinstopped_unused;
-  wire        reset_high;
 
-  MMCME2_ADV
-  #(.BANDWIDTH            ("OPTIMIZED"),
-    .CLKOUT4_CASCADE      ("FALSE"),
+  PLLE2_ADV
+  #(.BANDWIDTH            ("HIGH"),
     .COMPENSATION         ("ZHOLD"),
     .STARTUP_WAIT         ("FALSE"),
-    .DIVCLK_DIVIDE        (1),
-    .CLKFBOUT_MULT_F      (7.250),
+    .DIVCLK_DIVIDE        (2),
+    .CLKFBOUT_MULT        (29),
     .CLKFBOUT_PHASE       (0.000),
-    .CLKFBOUT_USE_FINE_PS ("FALSE"),
-    .CLKOUT0_DIVIDE_F     (7.250),
+    .CLKOUT0_DIVIDE       (59),
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
-    .CLKOUT0_USE_FINE_PS  ("FALSE"),
-    .CLKOUT1_DIVIDE       (59),
-    .CLKOUT1_PHASE        (0.000),
-    .CLKOUT1_DUTY_CYCLE   (0.500),
-    .CLKOUT1_USE_FINE_PS  ("FALSE"),
     .CLKIN1_PERIOD        (10.000))
-  mmcm_adv_inst
+  plle2_adv_inst
     // Output clocks
    (
     .CLKFBOUT            (clkfbout_zose_clk_wiz_0_0),
-    .CLKFBOUTB           (clkfboutb_unused),
-    .CLKOUT0             (clk_100_zose_clk_wiz_0_0),
-    .CLKOUT0B            (clkout0b_unused),
-    .CLKOUT1             (clk_12288_zose_clk_wiz_0_0),
-    .CLKOUT1B            (clkout1b_unused),
+    .CLKOUT0             (clk_24586_zose_clk_wiz_0_0),
+    .CLKOUT1             (clkout1_unused),
     .CLKOUT2             (clkout2_unused),
-    .CLKOUT2B            (clkout2b_unused),
     .CLKOUT3             (clkout3_unused),
-    .CLKOUT3B            (clkout3b_unused),
     .CLKOUT4             (clkout4_unused),
     .CLKOUT5             (clkout5_unused),
-    .CLKOUT6             (clkout6_unused),
      // Input clock control
     .CLKFBIN             (clkfbout_buf_zose_clk_wiz_0_0),
     .CLKIN1              (clk_in1_zose_clk_wiz_0_0),
@@ -171,18 +151,10 @@ wire clk_in2_zose_clk_wiz_0_0;
     .DO                  (do_unused),
     .DRDY                (drdy_unused),
     .DWE                 (1'b0),
-    // Ports for dynamic phase shift
-    .PSCLK               (1'b0),
-    .PSEN                (1'b0),
-    .PSINCDEC            (1'b0),
-    .PSDONE              (psdone_unused),
     // Other control and status signals
     .LOCKED              (locked_int),
-    .CLKINSTOPPED        (clkinstopped_unused),
-    .CLKFBSTOPPED        (clkfbstopped_unused),
     .PWRDWN              (1'b0),
-    .RST                 (reset_high));
-  assign reset_high = ~resetn; 
+    .RST                 (1'b0));
 
   assign locked = locked_int;
 // Clock Monitor clock assigning
@@ -200,13 +172,9 @@ wire clk_in2_zose_clk_wiz_0_0;
 
 
   BUFG clkout1_buf
-   (.O   (clk_100),
-    .I   (clk_100_zose_clk_wiz_0_0));
+   (.O   (clk_24586),
+    .I   (clk_24586_zose_clk_wiz_0_0));
 
-
-  BUFG clkout2_buf
-   (.O   (clk_12288),
-    .I   (clk_12288_zose_clk_wiz_0_0));
 
 
 

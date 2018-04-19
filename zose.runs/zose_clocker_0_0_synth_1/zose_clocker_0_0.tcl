@@ -17,6 +17,7 @@ proc create_report { reportName command } {
   }
 }
 set_param xicom.use_bs_reader 1
+set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {HDL-1065} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 create_project -in_memory -part xc7a35ticsg324-1L
@@ -30,11 +31,10 @@ set_property parent.project_path E:/Development/zose/zose.xpr [current_project]
 set_property XPM_LIBRARIES XPM_CDC [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property board_part digilentinc.com:arty-a7-35:part0:1.0 [current_project]
 set_property ip_output_repo e:/Development/zose/zose.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 read_verilog -library xil_defaultlib E:/Development/zose/zose.srcs/sources_1/imports/RTL/clocker.v
-read_ip -quiet e:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0.xci
+read_ip -quiet E:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0.xci
 
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -44,10 +44,12 @@ read_ip -quiet e:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
+set_param ips.enableIPCacheLiteLoad 0
 
 set cached_ip [config_ip_cache -export -no_bom -use_project_ipc -dir E:/Development/zose/zose.runs/zose_clocker_0_0_synth_1 -new_name zose_clocker_0_0 -ip [get_ips zose_clocker_0_0]]
 
 if { $cached_ip eq {} } {
+close [open __synthesis_is_running__ w]
 
 synth_design -top zose_clocker_0_0 -part xc7a35ticsg324-1L -mode out_of_context
 
@@ -84,32 +86,32 @@ write_checkpoint -force -noxdef zose_clocker_0_0.dcp
 create_report "zose_clocker_0_0_synth_1_synth_report_utilization_0" "report_utilization -file zose_clocker_0_0_utilization_synth.rpt -pb zose_clocker_0_0_utilization_synth.pb"
 
 if { [catch {
-  file copy -force E:/Development/zose/zose.runs/zose_clocker_0_0_synth_1/zose_clocker_0_0.dcp e:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0.dcp
+  file copy -force E:/Development/zose/zose.runs/zose_clocker_0_0_synth_1/zose_clocker_0_0.dcp E:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0.dcp
 } _RESULT ] } { 
   send_msg_id runtcl-3 error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
   error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
 }
 
 if { [catch {
-  write_verilog -force -mode synth_stub e:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_stub.v
+  write_verilog -force -mode synth_stub E:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_stub.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a Verilog synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_vhdl -force -mode synth_stub e:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_stub.vhdl
+  write_vhdl -force -mode synth_stub E:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_stub.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a VHDL synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_verilog -force -mode funcsim e:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_sim_netlist.v
+  write_verilog -force -mode funcsim E:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_sim_netlist.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the Verilog functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_vhdl -force -mode funcsim e:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_sim_netlist.vhdl
+  write_vhdl -force -mode funcsim E:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_sim_netlist.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
@@ -119,32 +121,32 @@ if { [catch {
 
 
 if { [catch {
-  file copy -force E:/Development/zose/zose.runs/zose_clocker_0_0_synth_1/zose_clocker_0_0.dcp e:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0.dcp
+  file copy -force E:/Development/zose/zose.runs/zose_clocker_0_0_synth_1/zose_clocker_0_0.dcp E:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0.dcp
 } _RESULT ] } { 
   send_msg_id runtcl-3 error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
   error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
 }
 
 if { [catch {
-  file rename -force E:/Development/zose/zose.runs/zose_clocker_0_0_synth_1/zose_clocker_0_0_stub.v e:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_stub.v
+  file rename -force E:/Development/zose/zose.runs/zose_clocker_0_0_synth_1/zose_clocker_0_0_stub.v E:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_stub.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a Verilog synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  file rename -force E:/Development/zose/zose.runs/zose_clocker_0_0_synth_1/zose_clocker_0_0_stub.vhdl e:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_stub.vhdl
+  file rename -force E:/Development/zose/zose.runs/zose_clocker_0_0_synth_1/zose_clocker_0_0_stub.vhdl E:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_stub.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a VHDL synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  file rename -force E:/Development/zose/zose.runs/zose_clocker_0_0_synth_1/zose_clocker_0_0_sim_netlist.v e:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_sim_netlist.v
+  file rename -force E:/Development/zose/zose.runs/zose_clocker_0_0_synth_1/zose_clocker_0_0_sim_netlist.v E:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_sim_netlist.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the Verilog functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 if { [catch {
-  file rename -force E:/Development/zose/zose.runs/zose_clocker_0_0_synth_1/zose_clocker_0_0_sim_netlist.vhdl e:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_sim_netlist.vhdl
+  file rename -force E:/Development/zose/zose.runs/zose_clocker_0_0_synth_1/zose_clocker_0_0_sim_netlist.vhdl E:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_sim_netlist.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
@@ -153,12 +155,14 @@ if { [catch {
 
 if {[file isdir E:/Development/zose/zose.ip_user_files/ip/zose_clocker_0_0]} {
   catch { 
-    file copy -force e:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_stub.v E:/Development/zose/zose.ip_user_files/ip/zose_clocker_0_0
+    file copy -force E:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_stub.v E:/Development/zose/zose.ip_user_files/ip/zose_clocker_0_0
   }
 }
 
 if {[file isdir E:/Development/zose/zose.ip_user_files/ip/zose_clocker_0_0]} {
   catch { 
-    file copy -force e:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_stub.vhdl E:/Development/zose/zose.ip_user_files/ip/zose_clocker_0_0
+    file copy -force E:/Development/zose/zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/zose_clocker_0_0_stub.vhdl E:/Development/zose/zose.ip_user_files/ip/zose_clocker_0_0
   }
 }
+file delete __synthesis_is_running__
+close [open __synthesis_is_complete__ w]

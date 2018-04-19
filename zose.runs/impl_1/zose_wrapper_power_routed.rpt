@@ -1,7 +1,7 @@
-Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2017.4 (win64) Build 2086221 Fri Dec 15 20:55:39 MST 2017
-| Date             : Sun Apr  8 22:03:12 2018
+| Tool Version     : Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
+| Date             : Thu Apr 19 21:20:37 2018
 | Host             : Saldytuvas running 64-bit major release  (build 9200)
 | Command          : report_power -file zose_wrapper_power_routed.rpt -pb zose_wrapper_power_summary_routed.pb -rpx zose_wrapper_power_routed.rpx
 | Design           : zose_wrapper
@@ -9,7 +9,7 @@ Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 | Design State     : routed
 | Grade            : industrial
 | Process          : typical
-| Characterization : Preliminary
+| Characterization : Production
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Power Report
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.169        |
+| Total On-Chip Power (W)  | 0.204        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.107        |
+| Dynamic (W)              | 0.141        |
 | Device Static (W)        | 0.062        |
 | Effective TJA (C/W)      | 4.8          |
-| Max Ambient (C)          | 99.2         |
-| Junction Temperature (C) | 25.8         |
+| Max Ambient (C)          | 99.0         |
+| Junction Temperature (C) | 26.0         |
 | Confidence Level         | Medium       |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,18 +52,18 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.001 |       10 |       --- |             --- |
-| Slice Logic    |    <0.001 |      286 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      109 |     20800 |            0.52 |
-|   Register     |    <0.001 |      130 |     41600 |            0.31 |
-|   CARRY4       |    <0.001 |        5 |      8150 |            0.06 |
-|   Others       |     0.000 |       12 |       --- |             --- |
-| Signals        |    <0.001 |      181 |       --- |             --- |
-| Block RAM      |    <0.001 |      0.5 |        50 |            1.00 |
-| MMCM           |     0.103 |        1 |         5 |           20.00 |
-| I/O            |     0.002 |       11 |       210 |            5.24 |
+| Clocks         |    <0.001 |        8 |       --- |             --- |
+| Slice Logic    |    <0.001 |      269 |       --- |             --- |
+|   LUT as Logic |    <0.001 |      108 |     20800 |            0.52 |
+|   Register     |    <0.001 |      133 |     41600 |            0.32 |
+|   CARRY4       |    <0.001 |        4 |      8150 |            0.05 |
+|   Others       |     0.000 |        8 |       --- |             --- |
+| Signals        |    <0.001 |      193 |       --- |             --- |
+| Block RAM      |    <0.001 |        4 |        50 |            8.00 |
+| PLL            |     0.134 |        1 |         5 |           20.00 |
+| I/O            |     0.006 |       12 |       210 |            5.71 |
 | Static Power   |     0.062 |          |           |                 |
-| Total          |     0.169 |          |           |                 |
+| Total          |     0.204 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,9 +73,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       0.950 |     0.008 |       0.002 |      0.006 |
-| Vccaux    |       1.800 |     0.069 |       0.057 |      0.011 |
-| Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |
+| Vccint    |       0.950 |     0.022 |       0.016 |      0.006 |
+| Vccaux    |       1.800 |     0.079 |       0.067 |      0.011 |
+| Vcco33    |       3.300 |     0.003 |       0.002 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -92,17 +92,17 @@ Table of Contents
 1.3 Confidence Level
 --------------------
 
-+-----------------------------+------------+-------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
-| User Input Data             | Confidence | Details                                               | Action                                                                                                     |
-+-----------------------------+------------+-------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
-| Design implementation state | High       | Design is routed                                      |                                                                                                            |
-| Clock nodes activity        | High       | User specified more than 95% of clocks                |                                                                                                            |
-| I/O nodes activity          | Medium     | More than 5% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view   |
-| Internal nodes activity     | Medium     | User specified less than 25% of internal nodes        | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views |
-| Device models               | Medium     | Device models are not Production                      | Device models may change and in turn slightly affect accuracy                                              |
-|                             |            |                                                       |                                                                                                            |
-| Overall confidence level    | Medium     |                                                       |                                                                                                            |
-+-----------------------------+------------+-------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
++-----------------------------+------------+-------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| User Input Data             | Confidence | Details                                               | Action                                                                                                             |
++-----------------------------+------------+-------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| Design implementation state | High       | Design is routed                                      |                                                                                                                    |
+| Clock nodes activity        | Medium     | More than 5% of clocks are missing user specification | Provide missing clock activity with a constraint file, simulation results or by editing the "By Clock Domain" view |
+| I/O nodes activity          | Medium     | More than 5% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view           |
+| Internal nodes activity     | Medium     | User specified less than 25% of internal nodes        | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views         |
+| Device models               | High       | Device models are Production                          |                                                                                                                    |
+|                             |            |                                                       |                                                                                                                    |
+| Overall confidence level    | Medium     |                                                       |                                                                                                                    |
++-----------------------------+------------+-------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
 
 
 2. Settings
@@ -129,12 +129,10 @@ Table of Contents
 +------------------------------+--------------------------------------------------+-----------------+
 | Clock                        | Domain                                           | Constraint (ns) |
 +------------------------------+--------------------------------------------------+-----------------+
-| clk_100_zose_clk_wiz_0_0     | zose_i/clk_wiz_0/inst/clk_100_zose_clk_wiz_0_0   |            10.0 |
-| clk_100_zose_clk_wiz_0_0_1   | zose_i/clk_wiz_0/inst/clk_100_zose_clk_wiz_0_0   |            10.0 |
-| clk_12288_zose_clk_wiz_0_0   | zose_i/clk_wiz_0/inst/clk_12288_zose_clk_wiz_0_0 |            81.4 |
-| clk_12288_zose_clk_wiz_0_0_1 | zose_i/clk_wiz_0/inst/clk_12288_zose_clk_wiz_0_0 |            81.4 |
-| clkfbout_zose_clk_wiz_0_0    | zose_i/clk_wiz_0/inst/clkfbout_zose_clk_wiz_0_0  |            10.0 |
-| clkfbout_zose_clk_wiz_0_0_1  | zose_i/clk_wiz_0/inst/clkfbout_zose_clk_wiz_0_0  |            10.0 |
+| clk_24586_zose_clk_wiz_0_0   | zose_i/clk_wiz_0/inst/clk_24586_zose_clk_wiz_0_0 |            40.7 |
+| clk_24586_zose_clk_wiz_0_0_1 | zose_i/clk_wiz_0/inst/clk_24586_zose_clk_wiz_0_0 |            40.7 |
+| clkfbout_zose_clk_wiz_0_0    | zose_i/clk_wiz_0/inst/clkfbout_zose_clk_wiz_0_0  |            20.0 |
+| clkfbout_zose_clk_wiz_0_0_1  | zose_i/clk_wiz_0/inst/clkfbout_zose_clk_wiz_0_0  |            20.0 |
 | sys_clk_pin                  | sys_clock                                        |            10.0 |
 | sys_clock                    | sys_clock                                        |            10.0 |
 +------------------------------+--------------------------------------------------+-----------------+
@@ -146,23 +144,19 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+----------------------+-----------+
-| Name                 | Power (W) |
-+----------------------+-----------+
-| zose_wrapper         |     0.107 |
-|   zose_i             |     0.105 |
-|     clk_wiz_0        |     0.104 |
-|       inst           |     0.104 |
-|     clocker_0        |    <0.001 |
-|       inst           |    <0.001 |
-|     driver_output_0  |    <0.001 |
-|       inst           |    <0.001 |
-|     sinus_sampler_0  |    <0.001 |
-|       inst           |    <0.001 |
-|     square_sampler_0 |    <0.001 |
-|       inst           |    <0.001 |
-|     switcher_0       |    <0.001 |
-|       inst           |    <0.001 |
-+----------------------+-----------+
++------------------------+-----------+
+| Name                   | Power (W) |
++------------------------+-----------+
+| zose_wrapper           |     0.141 |
+|   zose_i               |     0.135 |
+|     clk_wiz_0          |     0.135 |
+|       inst             |     0.135 |
+|     clocker_0          |    <0.001 |
+|       inst             |    <0.001 |
+|     driver_output_32_0 |    <0.001 |
+|       inst             |    <0.001 |
+|     sinus_sampler_0    |    <0.001 |
+|       inst             |    <0.001 |
++------------------------+-----------+
 
 

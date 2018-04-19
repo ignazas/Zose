@@ -29,7 +29,6 @@ set_property parent.project_path E:/Development/zose/zose.xpr [current_project]
 set_property XPM_LIBRARIES XPM_CDC [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property board_part digilentinc.com:arty-a7-35:part0:1.0 [current_project]
 set_property ip_output_repo e:/Development/zose/zose.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 read_verilog -library xil_defaultlib E:/Development/zose/zose.srcs/sources_1/bd/zose/hdl/zose_wrapper.v
@@ -52,6 +51,8 @@ set_property used_in_implementation false [get_files E:/Development/zose/zose.sr
 
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
+set_param ips.enableIPCacheLiteLoad 0
+close [open __synthesis_is_running__ w]
 
 synth_design -top zose_wrapper -part xc7a35ticsg324-1L
 
@@ -60,3 +61,5 @@ synth_design -top zose_wrapper -part xc7a35ticsg324-1L
 set_param constraints.enableBinaryConstraints false
 write_checkpoint -force -noxdef zose_wrapper.dcp
 create_report "synth_1_synth_report_utilization_0" "report_utilization -file zose_wrapper_utilization_synth.rpt -pb zose_wrapper_utilization_synth.pb"
+file delete __synthesis_is_running__
+close [open __synthesis_is_complete__ w]

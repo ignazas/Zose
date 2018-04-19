@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35ticsg324-1L" LaunchTime="1523214030">
+<GenRun Id="synth_1" LaunchPart="xc7a35ticsg324-1L" LaunchTime="1524161874">
   <File Type="PA-TCL" Name="zose_wrapper.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="zose_wrapper_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="zose_wrapper_reports.tcl"/>
@@ -11,15 +11,6 @@
   <File Type="VDS-TIMING-PB" Name="zose_wrapper_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/imports/RTL/square_sampler.v">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/square_sampler.v"/>
-        <Attr Name="ImportTime" Val="1522775458"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/imports/RTL/clocker.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../RTL/clocker.v"/>
@@ -29,28 +20,17 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/RTL/driver_output.v">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/driver_output.v"/>
-        <Attr Name="ImportTime" Val="1522775482"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/RTL/switcher.v">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/switcher.v"/>
-        <Attr Name="ImportTime" Val="1522775506"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/imports/RTL/sinus_sampler.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../RTL/sinus_sampler.v"/>
         <Attr Name="ImportTime" Val="1522775493"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/RTL/driver_output_32.v">
+      <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -67,12 +47,31 @@
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/RTL/square_sampler.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/square_sampler.v"/>
+        <Attr Name="ImportTime" Val="1522775458"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/level_control.v">
+    <File Path="$PSRCDIR/sources_1/imports/RTL/upscaler_16_32.v">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/RTL/switcher.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../RTL/switcher.v"/>
+        <Attr Name="ImportTime" Val="1522775506"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -83,6 +82,22 @@
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="ImportPath" Val="$PPRDIR/../RTL/triangle_sampler.v"/>
         <Attr Name="ImportTime" Val="1522775513"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/RTL/level_control.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/RTL/driver_output_16.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -112,10 +127,8 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2017"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="zose_clk_wiz_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="zose_clocker_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="zose_driver_output_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="zose_switcher_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="zose_square_sampler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zose_clk_wiz_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zose_driver_output_32_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="zose_sinus_sampler_0_0"/>
 </GenRun>

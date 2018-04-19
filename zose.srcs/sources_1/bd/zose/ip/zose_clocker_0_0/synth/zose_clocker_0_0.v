@@ -50,23 +50,26 @@
 // IP VLNV: xilinx.com:module_ref:clocker:1.0
 // IP Revision: 1
 
-(* X_CORE_INFO = "clocker,Vivado 2017.4" *)
+(* X_CORE_INFO = "clocker,Vivado 2018.1" *)
 (* CHECK_LICENSE_TYPE = "zose_clocker_0_0,clocker,{}" *)
-(* CORE_GENERATION_INFO = "zose_clocker_0_0,clocker,{x_ipProduct=Vivado 2017.4,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=clocker,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
+(* CORE_GENERATION_INFO = "zose_clocker_0_0,clocker,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=clocker,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module zose_clocker_0_0 (
   in_12288,
   out_lrclock,
-  out_bclock
+  out_bclock_16,
+  out_bclock_32
 );
 
 input wire in_12288;
 output wire out_lrclock;
-output wire out_bclock;
+output wire out_bclock_16;
+output wire out_bclock_32;
 
   clocker inst (
     .in_12288(in_12288),
     .out_lrclock(out_lrclock),
-    .out_bclock(out_bclock)
+    .out_bclock_16(out_bclock_16),
+    .out_bclock_32(out_bclock_32)
   );
 endmodule

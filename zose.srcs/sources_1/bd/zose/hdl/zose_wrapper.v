@@ -1,7 +1,7 @@
-//Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+//Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2017.4 (win64) Build 2086221 Fri Dec 15 20:55:39 MST 2017
-//Date        : Sun Apr  8 21:41:30 2018
+//Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
+//Date        : Thu Apr 19 21:17:50 2018
 //Host        : Saldytuvas running 64-bit major release  (build 9200)
 //Command     : generate_target zose_wrapper.bd
 //Design      : zose_wrapper
@@ -18,7 +18,6 @@ module zose_wrapper
     led,
     lrclock,
     mclock,
-    reset,
     sdata,
     source_switch,
     sys_clock);
@@ -30,7 +29,6 @@ module zose_wrapper
   output [3:0]led;
   output lrclock;
   output mclock;
-  input reset;
   output sdata;
   input source_switch;
   input sys_clock;
@@ -43,7 +41,6 @@ module zose_wrapper
   wire [3:0]led;
   wire lrclock;
   wire mclock;
-  wire reset;
   wire sdata;
   wire source_switch;
   wire sys_clock;
@@ -57,7 +54,6 @@ module zose_wrapper
         .led(led),
         .lrclock(lrclock),
         .mclock(mclock),
-        .reset(reset),
         .sdata(sdata),
         .source_switch(source_switch),
         .sys_clock(sys_clock));
