@@ -2,32 +2,31 @@
    ExpandedHierarchyInLayout: "",
    guistr: "# # String gsaved with Nlview 6.8.5  2018-01-30 bk=1.4354 VDI=40 GEI=35 GUI=JA:1.6 non-TLS
 #  -string -flagsOSRD
-preplace port bclock -pg 1 -y 100 -defaultsOSRD
-preplace port mclock -pg 1 -y 280 -defaultsOSRD
-preplace port btn_f_up -pg 1 -y 220 -defaultsOSRD
-preplace port source_switch -pg 1 -y 440 -defaultsOSRD
-preplace port btn_vol_up -pg 1 -y 40 -defaultsOSRD
-preplace port sys_clock -pg 1 -y 370 -defaultsOSRD
-preplace port sdata -pg 1 -y 190 -defaultsOSRD
-preplace port lrclock -pg 1 -y 60 -defaultsOSRD
-preplace port btn_vol_down -pg 1 -y 20 -defaultsOSRD
-preplace port btn_f_down -pg 1 -y 240 -defaultsOSRD
-preplace portBus led -pg 1 -y 440 -defaultsOSRD
-preplace inst driver_output_32_0 -pg 1 -lvl 2 -y 190 -defaultsOSRD
-preplace inst sinus_sampler_0 -pg 1 -lvl 1 -y 220 -defaultsOSRD
-preplace inst filterfir_0 -pg 1 -lvl 2 -y 360 -defaultsOSRD
-preplace inst clocker_0 -pg 1 -lvl 1 -y 80 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 1 -y 370 -defaultsOSRD
-preplace netloc clocker_0_out_lrclock 1 1 2 280 60 NJ
-preplace netloc clk_wiz_0_clk_12288 1 0 3 20 300 280 280 NJ
-preplace netloc btn_f_down_1 1 0 1 NJ
-preplace netloc driver_output_32_0_out_sdata 1 2 1 NJ
-preplace netloc sys_clock_1 1 0 1 NJ
-preplace netloc clocker_0_out_bclock_32 1 1 2 NJ 100 NJ
-preplace netloc source_switch_1 1 0 3 NJ 440 NJ 440 NJ
-preplace netloc sinus_sampler_0_audio_data 1 1 1 290
-preplace netloc btn_f_up_1 1 0 1 NJ
-levelinfo -pg 1 0 150 420 570 -top 0 -bot 600
+preplace port bclock -pg 1 -y 220 -defaultsOSRD
+preplace port mclock -pg 1 -y 200 -defaultsOSRD
+preplace port btn_f_up -pg 1 -y 40 -defaultsOSRD
+preplace port source_switch -pg 1 -y 460 -defaultsOSRD
+preplace port btn_vol_up -pg 1 -y 80 -defaultsOSRD
+preplace port sys_clock -pg 1 -y 380 -defaultsOSRD
+preplace port sdata -pg 1 -y 110 -defaultsOSRD
+preplace port lrclock -pg 1 -y 20 -defaultsOSRD
+preplace port btn_vol_down -pg 1 -y 60 -defaultsOSRD
+preplace port btn_f_down -pg 1 -y 20 -defaultsOSRD
+preplace portBus led -pg 1 -y 460 -defaultsOSRD
+preplace inst downscaler_32_16_0 -pg 1 -lvl 2 -y 100 -defaultsOSRD
+preplace inst driver_output_16_0 -pg 1 -lvl 3 -y 110 -defaultsOSRD
+preplace inst sinus_sampler_0 -pg 1 -lvl 1 -y 100 -defaultsOSRD
+preplace inst clocker_0 -pg 1 -lvl 2 -y 220 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 2 -y 380 -defaultsOSRD
+preplace netloc clocker_0_out_bclock_16 1 2 2 NJ 220 NJ
+preplace netloc clocker_0_out_lrclock 1 0 4 20 30 NJ 30 540 20 NJ
+preplace netloc driver_output_16_0_out_sdata 1 3 1 NJ
+preplace netloc clk_wiz_0_clk_12288 1 1 3 260 40 550 200 N
+preplace netloc sys_clock_1 1 0 2 NJ 380 NJ
+preplace netloc downscaler_32_16_0_out_16 1 2 1 530
+preplace netloc source_switch_1 1 0 4 NJ 460 NJ 460 NJ 460 NJ
+preplace netloc sinus_sampler_0_audio_data 1 1 1 NJ
+levelinfo -pg 1 0 140 400 700 860 -top 0 -bot 480
 ",
 }
 {

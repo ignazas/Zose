@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 module clocker(
-		input in_12288,
+		input mclock,
 		output reg out_lrclock,
 		output reg out_bclock_16,
 		output reg out_bclock_32
@@ -22,8 +22,8 @@ module clocker(
 		out_bclock_32 = 0;
 	end
 
-	always @ (posedge in_12288) begin 
-		if(bclk_divider_16 == 7) // 16bit BCLK 1563kHz @0.6510 us 
+	always @ (posedge mclock) begin 
+		if(bclk_divider_16 == 3) // 16bit BCLK 1563kHz @0.6510 us 
 			begin
 				bclk_divider_16 <= 0;
 				out_bclock_16 <= ~out_bclock_16;

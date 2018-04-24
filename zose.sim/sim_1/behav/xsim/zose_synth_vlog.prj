@@ -2,13 +2,15 @@
 verilog xil_defaultlib  --include "../../../../zose.srcs/sources_1/bd/zose/ipshared/4903" \
 "../../../../zose.srcs/sources_1/imports/RTL/clocker.v" \
 "../../../../zose.srcs/sources_1/imports/RTL/sinus_sampler.v" \
-"../../../../zose.srcs/sources_1/imports/RTL/driver_output_32.v" \
+"../../../../zose.srcs/sources_1/imports/RTL/driver_output_16.v" \
+"../../../../zose.srcs/sources_1/new/downscaler_32_16.v" \
 "../../../../zose.srcs/sources_1/bd/zose/ip/zose_clk_wiz_0_0/zose_clk_wiz_0_0_clk_wiz.v" \
 "../../../../zose.srcs/sources_1/bd/zose/ip/zose_clk_wiz_0_0/zose_clk_wiz_0_0.v" \
 "../../../../zose.srcs/sources_1/bd/zose/ip/zose_clocker_0_0/sim/zose_clocker_0_0.v" \
 "../../../../zose.srcs/sources_1/bd/zose/ip/zose_sinus_sampler_0_0/sim/zose_sinus_sampler_0_0.v" \
 "../../../../zose.srcs/sources_1/bd/zose/sim/zose.v" \
-"../../../../zose.srcs/sources_1/bd/zose/ip/zose_driver_output_32_0_0/sim/zose_driver_output_32_0_0.v" \
+"../../../../zose.srcs/sources_1/bd/zose/ip/zose_driver_output_16_0_0/sim/zose_driver_output_16_0_0.v" \
+"../../../../zose.srcs/sources_1/bd/zose/ip/zose_downscaler_32_16_0_0/sim/zose_downscaler_32_16_0_0.v" \
 "../../../../zose.srcs/sim_1/new/zose_synth.v" \
 
 # compile glbl module

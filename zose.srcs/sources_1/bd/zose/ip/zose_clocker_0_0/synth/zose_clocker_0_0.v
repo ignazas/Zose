@@ -55,19 +55,19 @@
 (* CORE_GENERATION_INFO = "zose_clocker_0_0,clocker,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=clocker,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module zose_clocker_0_0 (
-  in_12288,
+  mclock,
   out_lrclock,
   out_bclock_16,
   out_bclock_32
 );
 
-input wire in_12288;
+input wire mclock;
 output wire out_lrclock;
 output wire out_bclock_16;
 output wire out_bclock_32;
 
   clocker inst (
-    .in_12288(in_12288),
+    .mclock(mclock),
     .out_lrclock(out_lrclock),
     .out_bclock_16(out_bclock_16),
     .out_bclock_32(out_bclock_32)

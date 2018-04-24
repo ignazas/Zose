@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35ticsg324-1L" LaunchTime="1524161874">
+<GenRun Id="impl_1" LaunchPart="xc7a35ticsg324-1L" LaunchTime="1524596342">
   <File Type="PWROPT-DCP" Name="zose_wrapper_pwropt.dcp"/>
   <File Type="ROUTE-PWR" Name="zose_wrapper_power_routed.rpt"/>
   <File Type="PA-TCL" Name="zose_wrapper.tcl"/>
@@ -83,7 +83,14 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/RTL/driver_output_32.v">
+    <File Path="$PSRCDIR/sources_1/imports/RTL/driver_output_16.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/downscaler_32_16.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -101,6 +108,14 @@
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/RTL/driver_output_32.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/imports/RTL/square_sampler.v">
@@ -149,14 +164,6 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/RTL/driver_output_16.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
       <Option Name="TopModule" Val="zose_wrapper"/>
@@ -193,6 +200,7 @@
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="zose_clocker_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="zose_clk_wiz_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="zose_driver_output_32_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zose_downscaler_32_16_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zose_driver_output_16_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="zose_sinus_sampler_0_0"/>
 </GenRun>

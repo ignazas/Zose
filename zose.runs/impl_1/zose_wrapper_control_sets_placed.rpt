@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-| Date         : Thu Apr 19 21:20:14 2018
+| Date         : Tue Apr 24 22:01:27 2018
 | Host         : Saldytuvas running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file zose_wrapper_control_sets_placed.rpt
 | Design       : zose_wrapper
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Number of unique control sets                            |    10 |
-| Unused register locations in slices containing registers |    35 |
+| Number of unique control sets                            |     6 |
+| Unused register locations in slices containing registers |    19 |
 +----------------------------------------------------------+-------+
 
 
@@ -34,11 +34,9 @@ Table of Contents
 +--------+--------------+
 | Fanout | Control Sets |
 +--------+--------------+
-|      1 |            2 |
-|      5 |            3 |
-|      8 |            1 |
-|     10 |            1 |
-|     11 |            1 |
+|      1 |            1 |
+|      5 |            2 |
+|      6 |            1 |
 |    16+ |            2 |
 +--------+--------------+
 
@@ -49,12 +47,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              19 |            8 |
+| No           | No                    | No                     |              27 |           10 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              26 |            6 |
-| Yes          | No                    | No                     |              65 |           19 |
+| No           | Yes                   | No                     |              10 |            2 |
+| Yes          | No                    | No                     |              32 |           10 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              23 |            7 |
+| Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -64,16 +62,12 @@ Table of Contents
 +--------------------------------------+------------------------------------------+--------------------------------------------------+------------------+----------------+
 |             Clock Signal             |               Enable Signal              |                 Set/Reset Signal                 | Slice Load Count | Bel Load Count |
 +--------------------------------------+------------------------------------------+--------------------------------------------------+------------------+----------------+
-|  zose_i/clk_wiz_0/inst/clk_24586     | zose_i/sinus_sampler_0/inst/clear        |                                                  |                1 |              1 |
 | ~zose_i/clocker_0/inst/out_bclock_16 |                                          |                                                  |                1 |              1 |
-|  zose_i/clk_wiz_0/inst/clk_24586     |                                          | zose_i/clocker_0/inst/bclk_divider_16[4]_i_1_n_0 |                1 |              5 |
-|  zose_i/clk_wiz_0/inst/clk_24586     |                                          | zose_i/clocker_0/inst/bclk_divider_32[4]_i_1_n_0 |                1 |              5 |
+|  zose_i/clk_wiz_0/inst/clk_12288     |                                          | zose_i/clocker_0/inst/bclk_divider_16[4]_i_1_n_0 |                1 |              5 |
 | ~zose_i/clocker_0/inst/out_bclock_16 |                                          | zose_i/clocker_0/inst/lrclk_divider[4]_i_1_n_0   |                1 |              5 |
-|  zose_i/clk_wiz_0/inst/clk_24586     |                                          |                                                  |                5 |              8 |
-|  btn_f_down_IBUF                     |                                          |                                                  |                2 |             10 |
-|  zose_i/clk_wiz_0/inst/clk_24586     |                                          | zose_i/sinus_sampler_0/inst/clear                |                3 |             11 |
-|  zose_i/clk_wiz_0/inst/clk_24586     | zose_i/sinus_sampler_0/inst/clear        | zose_i/sinus_sampler_0/inst/i[12]_i_1_n_0        |                7 |             23 |
-|  zose_i/clk_wiz_0/inst/clk_24586     | zose_i/driver_output_32_0/inst/out_pdata |                                                  |               18 |             64 |
+|  zose_i/clk_wiz_0/inst/clk_12288     |                                          |                                                  |                3 |              6 |
+|  zose_i/clocker_0/inst/out_lrclock   |                                          |                                                  |                6 |             20 |
+|  zose_i/clk_wiz_0/inst/clk_12288     | zose_i/driver_output_16_0/inst/out_pdata |                                                  |               10 |             32 |
 +--------------------------------------+------------------------------------------+--------------------------------------------------+------------------+----------------+
 
 

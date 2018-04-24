@@ -2,8 +2,8 @@
 # Vivado v2018.1 (64-bit)
 # SW Build 2188600 on Wed Apr  4 18:40:38 MDT 2018
 # IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
-# Start of session at: Thu Apr 19 21:19:35 2018
-# Process ID: 5812
+# Start of session at: Tue Apr 24 22:00:46 2018
+# Process ID: 2500
 # Current directory: E:/Development/zose/zose.runs/impl_1
 # Command line: vivado.exe -log zose_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source zose_wrapper.tcl -notrace
 # Log file: E:/Development/zose/zose.runs/impl_1/zose_wrapper.vdi
